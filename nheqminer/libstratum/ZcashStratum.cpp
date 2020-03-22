@@ -533,7 +533,7 @@ ZcashJob* ZcashMiner<CPUSolver, CUDASolver, OPENCLSolver>::parseJob(const Array&
     // TODO: On a LE host shouldn't this be le32toh?
     ret->header.nVersion = be32toh(version);
 
-    if (ret->header.nVersion == 4) {
+    if (ret->header.nVersion > 29) {
         if (params.size() < 8) {
             throw std::logic_error("Invalid job params");
         }
